@@ -12,132 +12,130 @@
 <style>
 
 *{
-margin:0;
-padding:0;
-box-sizing:border-box;
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:'Poppins',sans-serif;
 }
 
 body{
 
-font-family:'Poppins',sans-serif;
+    background-image:url("motorcycle.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
 
-background:url("motorcycle.jpg") center center/cover no-repeat fixed;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-height:100vh;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-overflow:hidden;
+    color:white;
+    position:relative;
 
 }
 
+/* leichte Abdunklung */
+
 body::before{
 
-content:"";
+    content:"";
+    position:absolute;
+    inset:0;
 
-position:absolute;
+    background:rgba(0,0,0,.20);
 
-top:0;
+}
 
-left:0;
+/* langsamer Zoom */
 
-width:100%;
+body::after{
 
-height:100%;
+    content:"";
+    position:absolute;
+    inset:0;
 
-background:rgba(0,0,0,.20);
+    background-image:url("motorcycle.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
 
-animation:zoom 25s ease-in-out infinite alternate;
+    animation:zoom 30s ease-in-out infinite alternate;
+
+    z-index:-1;
 
 }
 
 @keyframes zoom{
 
-from{transform:scale(1);}
-to{transform:scale(1.12);}
+    from{
+        transform:scale(1);
+    }
+
+    to{
+        transform:scale(1.08);
+    }
 
 }
 
-.card{
+.content{
 
-position:relative;
+    position:relative;
+    z-index:10;
 
-z-index:2;
+    width:90%;
+    max-width:760px;
 
-width:min(92%,700px);
+    text-align:center;
 
-padding:45px;
-
-border-radius:25px;
-
-background:rgba(255,255,255,.08);
-
-backdrop-filter:blur(6px);
-
--webkit-backdrop-filter:blur(14px);
-
-text-align:center;
-
-color:white;
-
-box-shadow:0 20px 60px rgba(0,0,0,.35);
+    text-shadow:0 2px 10px rgba(0,0,0,.8);
 
 }
 
 .wave{
 
-display:inline-block;
+    font-size:55px;
 
-font-size:55px;
+    display:inline-block;
 
-animation:wave 2.5s infinite;
+    animation:wave 2s infinite;
 
 }
 
 @keyframes wave{
 
-0%{transform:rotate(0);}
+0%{transform:rotate(0deg);}
 15%{transform:rotate(18deg);}
 30%{transform:rotate(-8deg);}
 45%{transform:rotate(18deg);}
 60%{transform:rotate(-4deg);}
-100%{transform:rotate(0);}
+100%{transform:rotate(0deg);}
 
 }
 
 h1{
 
-font-size:48px;
-
-margin-top:10px;
-
-font-weight:700;
-
-}
-
-#intro{
-
-animation:fadeIn 1.5s forwards;
+    font-size:52px;
+    font-weight:700;
 
 }
 
 #message{
 
-display:none;
-
-opacity:0;
+    display:none;
 
 }
 
 .show{
 
-display:block !important;
+    display:block;
 
-animation:fadeIn 1.8s forwards;
+    animation:fadeIn 1.8s forwards;
 
 }
 
@@ -146,7 +144,6 @@ animation:fadeIn 1.8s forwards;
 from{
 
 opacity:0;
-
 transform:translateY(25px);
 
 }
@@ -154,7 +151,6 @@ transform:translateY(25px);
 to{
 
 opacity:1;
-
 transform:translateY(0);
 
 }
@@ -163,11 +159,11 @@ transform:translateY(0);
 
 p{
 
-font-size:21px;
+    margin:18px 0;
 
-line-height:1.8;
+    font-size:24px;
 
-margin-bottom:20px;
+    line-height:1.6;
 
 }
 
@@ -175,37 +171,41 @@ margin-bottom:20px;
 
 display:inline-block;
 
-margin-top:20px;
+margin-top:25px;
 
-padding:16px 34px;
+padding:18px 38px;
 
 background:#E1306C;
-
-color:white;
 
 border-radius:40px;
 
 text-decoration:none;
 
-font-size:19px;
+color:white;
+
+font-size:20px;
+
+font-weight:500;
 
 transition:.3s;
+
+box-shadow:0 8px 20px rgba(0,0,0,.4);
 
 }
 
 .button:hover{
 
-transform:scale(1.05);
+transform:scale(1.06);
 
 }
 
 .footer{
 
-margin-top:35px;
+margin-top:40px;
 
-font-size:14px;
+font-size:15px;
 
-opacity:.8;
+opacity:.9;
 
 }
 
@@ -215,7 +215,7 @@ opacity:.8;
 
 <body>
 
-<div class="card">
+<div class="content">
 
 <div id="intro">
 
@@ -229,7 +229,7 @@ opacity:.8;
 
 <p>
 
-If you'd like to join me for a motorcycle ride sometime,
+If you'd like to join me for a motorcycle ride sometime,<br>
 
 I'd love to hear from you.
 
@@ -237,7 +237,7 @@ I'd love to hear from you.
 
 <p>
 
-Maybe to Lake Constance...
+Maybe to Lake Constance...<br>
 
 maybe somewhere completely different.
 
@@ -249,7 +249,7 @@ Let's find out.</p>
 
 <p>
 
-If you feel like it,
+If you feel like it,<br>
 
 just send me a message.
 
@@ -288,5 +288,4 @@ document.getElementById("message").classList.add("show");
 </script>
 
 </body>
-
 </html>
